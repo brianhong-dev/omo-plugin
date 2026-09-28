@@ -3,3 +3,4 @@ tests/
 tsconfig*.json
 .gitignore
 .omo/
+.agents/
