@@ -1,0 +1,49 @@
+{
+  "name": "senpi-extension-starter",
+  "version": "0.1.0",
+  "description": "A typed, npm-ready starter for Senpi extensions",
+  "type": "module",
+  "license": "MIT",
+  "keywords": ["senpi", "senpi-extension", "pi-package"],
+  "files": ["dist", "README.md", "LICENSE"],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./api": {
+      "types": "./dist/api/index.d.ts",
+      "import": "./dist/api/index.js"
+    },
+    "./api/*": {
+      "types": "./dist/api/*.d.ts",
+      "import": "./dist/api/*.js"
+    }
+  },
+  "pi": {
+    "extensions": ["./dist/index.js"]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "check": "bun run typecheck && bun run test && bun run build",
+    "prepack": "bun run check"
+  },
+  "peerDependencies": {
+    "@code-yeongyu/senpi": ">=2026.9.27",
+    "typebox": "*"
+  },
+  "devDependencies": {
+    "@code-yeongyu/senpi": "2026.9.27",
+    "@types/node": "^26.0.0",
+    "bun-types": "^1.2.0",
+    "typebox": "1.3.34",
+    "typescript": "^5.9.0"
+  }
+}
